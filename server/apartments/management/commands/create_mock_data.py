@@ -354,6 +354,8 @@ class Command(BaseCommand):
             profile.phone_number = '+1234567890'
             profile.social_categories = 'Sample Category'
             profile.iin = str(uuid.uuid4())
+            profile.first_name = 'Sample'
+            profile.last_name = 'User'
             profile.save()
             self.stdout.write(f'Updated user profile for: {user.username}')
         except UserProfile.DoesNotExist:
