@@ -338,7 +338,9 @@ class Command(BaseCommand):
         username = 'sampleuser'
         email = 'sampleuser@example.com'
         password = 'samplepassword'
-        user, created = User.objects.get_or_create(username=username, defaults={'email': email})
+        first_name = 'Sample'
+        last_name = 'User'
+        user, created = User.objects.get_or_create(username=username, defaults={'email': email, 'first_name': first_name, 'last_name': last_name})
         if created:
             user.set_password(password)
             user.save()
@@ -354,8 +356,6 @@ class Command(BaseCommand):
             profile.phone_number = '+1234567890'
             profile.social_categories = 'Sample Category'
             profile.iin = str(uuid.uuid4())
-            profile.first_name = 'Sample'
-            profile.last_name = 'User'
             profile.save()
             self.stdout.write(f'Updated user profile for: {user.username}')
         except UserProfile.DoesNotExist:
