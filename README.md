@@ -1,6 +1,6 @@
 # Baspana Project
 
-This project is a web application that includes a server and a client. The server is built using Django, a popular web framework for Python, and the client is built using Typescript, React and Vite. The whole application is packaged using Docker, which makes it easy to set up and run on any machine.
+This project is a web application that includes a server and a client. The server is built using Django, a popular web framework for Python, and the client is built using Typescript, React, and Vite. The whole application is packaged using Docker, which makes it easy to set up and run on any machine.
 
 ## Project Structure
 
@@ -31,8 +31,21 @@ This project is a web application that includes a server and a client. The serve
 
 3. **Access the Application**:
 
-   - **Server**: Open your web browser and go to [http://localhost:8765/admin](http://localhost:8765/admin) to access the server.
-   - **Client**: Open your web browser and go to [http://localhost:3456](http://localhost:3456) to access the client.
+   - **Server**: Open your web browser and go to <a href="http://localhost:8765/admin" target="_blank">http://localhost:8765/admin</a> to access the server.
+   - **Client**: Open your web browser and go to <a href="http://localhost:3456" target="_blank">http://localhost:3456</a> to access the client.
+
+## Mock User Credentials
+
+After launching the application, you can use the following credentials to log in:
+
+- **Admin User**:
+
+  - Username: `admin`
+  - Password: `adminpass`
+
+- **Sample User**:
+  - Username: `sampleuser`
+  - Password: `samplepassword`
 
 ## Tech Stack
 

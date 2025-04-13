@@ -27,7 +27,7 @@ class Command(BaseCommand):
 
         # Create sample user and user profile
         sample_user = self._get_or_create_sample_user()
-        self._create_user_profile(sample_user)
+        self._update_user_profile(sample_user)
         
         # Create admin user
         admin_user = self._get_or_create_admin_user()
@@ -347,20 +347,17 @@ class Command(BaseCommand):
             self.stdout.write(f'Sample user already exists: {username}')
         return user
 
-    def _create_user_profile(self, user):
-        profile, created = UserProfile.objects.get_or_create(
-            user=user,
-            defaults={
-                'address': '123 Sample Street, Sample City',
-                'phone_number': '+1234567890',
-                'social_categories': 'Sample Category',
-                'iin': str(uuid.uuid4()),
-            }
-        )
-        if created:
-            self.stdout.write(f'Created user profile for: {user.username}')
-        else:
-            self.stdout.write(f'User profile already exists for: {user.username}')
+    def _update_user_profile(self, user):
+        try:
+            profile = UserProfile.objects.get(user=user)
+            profile.address = '123 Sample Street, Sample City'
+            profile.phone_number = '+1234567890'
+            profile.social_categories = 'Sample Category'
+            profile.iin = str(uuid.uuid4())
+            profile.save()
+            self.stdout.write(f'Updated user profile for: {user.username}')
+        except UserProfile.DoesNotExist:
+            self.stdout.write(f'User profile does not exist for: {user.username}')
         return profile
 
     def _get_or_create_admin_user(self):
