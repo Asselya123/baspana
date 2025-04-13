@@ -5,15 +5,14 @@ services:
     build: ./server
     ports:
       - "8765:8000"
-    volumes:
-      - ./server:/app
-      - server_media:/app/media
     environment:
       - DEBUG=True
       - DJANGO_SECRET_KEY=development_secret_key
       - DATABASE_URL=sqlite:///db.sqlite3
+      - STATIC_ROOT=/app/staticfiles
     command: >
       bash -c "python manage.py migrate &&
+               python manage.py collectstatic --noinput &&
                python manage.py create_mock_data &&
                gunicorn baspana_project.wsgi:application --bind 0.0.0.0:8000"
 
@@ -24,13 +23,7 @@ services:
         - VITE_API_URL=http://localhost:8765
     ports:
       - "3456:80"
-    volumes:
-      - ./client:/app
-      - /app/node_modules
     environment:
       - VITE_API_URL=http://localhost:8765
     depends_on:
       - server
-
-volumes:
-  server_media:
