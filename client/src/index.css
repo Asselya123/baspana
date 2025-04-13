@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: Ubuntu, sans-serif;
+  height: 100%;
+}
+
+.background-0 {
+  background: linear-gradient(159deg, #00a89d -44.22%, #004e39 105.52%);
+}
+
+.background-1 {
+  background: linear-gradient(1deg, #a7eecc 3.04%, #e9ff9b 170.35%);
+}
+
+.background-2 {
+  background: linear-gradient(180deg, #0891f5 0%, #2848ee 100%);
+}
